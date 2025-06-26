@@ -1,0 +1,707 @@
+/* --- Enhanced Responsive & Attractive Styles --- */
+:root {
+    --bg: #f7f9fb;
+    --card-bg: #fff;
+    --shadow: 0 4px 16px rgba(60,72,88,0.08);
+    --radius: 16px;
+    --primary: #2563eb;
+    --success: #22c55e;
+    --warning: #f59e42;
+    --gray: #e5e7eb;
+    --text: #222;
+    --muted: #6b7280;
+    --danger: #e11d48;
+}
+
+/* Attractive gradient background */
+body {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f7f9fb 50%, #c7d2fe 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: var(--text);
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Make main app fill the full page and be responsive --- */
+.app-main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100vw;
+    min-height: 100vh;
+    background: rgba(255,255,255,0.96);
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Top bar styles remain the same, but stretch full width */
+.board-title {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;         /* Always row */
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 2px 8px rgba(60,72,88,0.06);
+    padding: 1.2rem 2vw;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(2px);
+    width: 100%;
+    min-height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    gap: 1rem;
+    overflow-x: auto;
+    flex-wrap: nowrap;           /* Prevent wrapping */
+}
+
+/* Board title left and actions are flexible */
+.board-title-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 2rem;        /* Make "My Tasks" bigger */
+    font-weight: 700;       /* Make it bolder */
+    letter-spacing: 0.5px;
+}
+.board-title-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+
+/* Add Task Button and Task Row: same width, responsive */
+.add-task-btn,
+.task-row {
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    display: block;
+}
+.add-task-btn {
+    background: linear-gradient(90deg, #2563eb 60%, #60a5fa 100%);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    box-shadow: 0 2px 8px rgba(60,72,88,0.08);
+    white-space: nowrap;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem; /* Add more space after "My Tasks" */
+}
+.add-task-btn:hover {
+    background: linear-gradient(90deg, #1746b3 60%, #2563eb 100%);
+    box-shadow: 0 4px 16px rgba(60,72,88,0.13);
+    transform: translateY(-2px) scale(1.03);
+}
+.task-row {
+    display: flex;
+    align-items: center;
+    background: rgba(247,249,251,0.95);
+    box-shadow: 0 2px 8px rgba(60,72,88,0.04);
+    gap: 1.2rem;
+    transition: box-shadow 0.2s, background 0.2s, transform 0.1s;
+    position: relative;
+    margin-bottom: 1.2rem;
+}
+.task-row:hover {
+    box-shadow: 0 4px 16px rgba(60,72,88,0.10);
+    background: #e0e7ff;
+    transform: scale(1.01);
+}
+
+/* Task groups and lists are flexible */
+.task-groups {
+    width: 95vw;
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    box-sizing: border-box;
+}
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Task row individual elements */
+.task-icon {
+    font-size: 1.4rem;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+.task-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.task-title {
+    font-size: 1.08rem;
+    font-weight: 500;
+    margin-bottom: 0.1rem;
+    word-break: break-word;
+}
+.task-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+
+/* Status badges for tasks */
+.status-badge {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.18em 0.7em;
+    border-radius: 999px;
+    background: var(--gray);
+    color: var(--muted);
+    display: inline-block;
+}
+.status-notstarted {
+    background: var(--gray);
+    color: var(--muted);
+}
+.status-inprogress {
+    background: var(--warning);
+    color: #fff;
+}
+.status-completed {
+    background: var(--success);
+    color: #fff;
+}
+
+/* Priority and deadline badges */
+.pref-badge {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.13em 0.6em;
+    border-radius: 999px;
+    background: #e0e7ff;
+    color: #3730a3;
+    margin-left: 0.2em;
+}
+.pref-high { background: #fee2e2; color: #b91c1c; }
+.pref-low { background: #dcfce7; color: #166534; }
+.deadline-badge {
+    font-size: 0.85rem;
+    color: #64748b;
+    background: #f1f5f9;
+    border-radius: 6px;
+    padding: 0.13em 0.6em;
+    margin-left: 0.2em;
+}
+
+/* Progress bars for tasks */
+.progress-bar-bg {
+    width: 100%;
+    height: 7px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    margin-top: 0.3rem;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.4s;
+}
+.progress-notstarted {
+    background: var(--gray);
+}
+.progress-inprogress {
+    background: var(--warning);
+}
+.progress-completed {
+    background: var(--success);
+}
+
+/* Task actions buttons */
+.task-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-left: 0.7em;
+}
+.task-actions button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.2em 0.5em;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+.task-actions button:hover {
+    background: var(--gray);
+    color: var(--primary);
+}
+.task-actions .delete-btn:hover {
+    color: var(--danger);
+}
+
+/* Modal and Login Responsive */
+.modal-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(60,72,88,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+.modal {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    min-width: 300px;
+    max-width: 95vw;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    position: relative;
+    animation: fadeIn 0.2s;
+    box-sizing: border-box;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97);}
+    to { opacity: 1; transform: scale(1);}
+}
+.modal-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--muted);
+    cursor: pointer;
+}
+.modal-close:hover {
+    color: var(--danger);
+}
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.modal label {
+    font-size: 0.98rem;
+    margin-bottom: 0.2em;
+}
+.modal input, .modal select {
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid var(--gray);
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+}
+.modal input:focus, .modal select:focus {
+    border: 1.5px solid var(--primary);
+}
+.modal .modal-actions {
+    display: flex;
+    gap: 0.7em;
+    justify-content: flex-end;
+}
+.modal .modal-actions button {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.modal .save-btn {
+    background: var(--primary);
+    color: #fff;
+}
+.modal .save-btn:hover {
+    background: #1746b3;
+}
+.modal .cancel-btn {
+    background: var(--gray);
+    color: var(--muted);
+}
+.modal .cancel-btn:hover {
+    background: #d1d5db;
+}
+.modal .modal-error {
+    color: var(--danger);
+    font-size: 0.95em;
+    text-align: center;
+    min-height: 1.2em;
+}
+
+/* --- Enhanced Login Page Styles --- */
+.login-container {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f0f9ff 100%);
+    box-shadow: 0 8px 32px rgba(60,72,88,0.18), 0 1.5px 8px rgba(37,99,235,0.10);
+    border-radius: 22px;
+    padding: 2.5rem 2rem 2rem 2rem;
+    max-width: 370px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: unset;
+    min-width: unset;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: none !important;
+    transition: none !important;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+/* Make the login form itself small and centered inside the container */
+.login-form {
+    width: 100%;
+    max-width: 340px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(60,72,88,0.10);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    box-sizing: border-box;
+    align-items: center;
+    overflow: hidden; /* Prevent children from overflowing */
+}
+
+.login-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    max-width: 100%;    /* Prevent input from exceeding parent */
+    box-sizing: border-box;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 1.5px solid #c7d2fe;
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+    background: #f8fafc;
+    box-shadow: 0 1px 4px rgba(60,72,88,0.04);
+    display: block;
+}
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border: 1.5px solid #2563eb;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+    background: #fff;
+}
+
+.login-form button[type="submit"] {
+    background: linear-gradient(90deg, #2563eb 60%, #60a5fa 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+.login-form button[type="submit"]:hover {
+    background: linear-gradient(90deg, #1746b3 60%, #2563eb 100%);
+    box-shadow: 0 4px 16px rgba(37,99,235,0.13);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.login-error {
+    color: #dc2626;
+    font-size: 0.98rem;
+    min-height: 1.2em;
+    text-align: center;
+    margin-top: 0.2rem;
+}
+
+/* Forgot Password Link */
+.forgot-password-link {
+    width: 100%;
+    text-align: center;    /* Center the link */
+    margin: 0.5rem 0 0 0;  /* Add a little space above */
+}
+.forgot-password-link a {
+    color: #2563eb;
+    font-size: 0.98rem;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.forgot-password-link a:hover {
+    color: #e11d48;
+}
+
+/* Responsive for small screens */
+@media (max-width: 500px) {
+    .login-container {
+        padding: 1.2rem 0.4rem 1.2rem 0.4rem;
+        max-width: 98vw;
+        border-radius: 14px;
+    }
+    .login-form {
+        padding: 1.2rem 0.4rem 1.2rem 0.4rem;
+        max-width: 97vw;
+        border-radius: 10px;
+    }
+    .login-title {
+        font-size: 1.1rem;
+    }
+    .add-task-btn {
+        width: 52px;
+        height: 52px;
+        max-width: 52px;
+        min-width: 52px;
+        min-height: 52px;
+        max-height: 52px;
+        border-radius: 50%;
+        padding: 0;
+        margin: 1.2rem auto 1.5rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #2563eb 60%, #60a5fa 100%);
+        color: #fff;
+        font-size: 2rem;
+        box-shadow: 0 2px 8px rgba(60,72,88,0.13);
+        transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+        position: relative;
+        overflow: visible;
+        white-space: nowrap;
+    }
+    .add-task-btn i {
+        margin: 0;
+        font-size: 2rem;
+        pointer-events: none;
+    }
+    .add-task-btn span {
+        display: none; /* Hide text on mobile */
+    }
+    .add-task-btn::after {
+        content: "Click here to add new tasks";
+        position: absolute;
+        left: 50%;
+        top: 110%;
+        transform: translateX(-50%);
+        background: #fff;
+        color: #2563eb;
+        font-size: 0.95rem;
+        padding: 0.4em 0.8em;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(60,72,88,0.13);
+        opacity: 0;
+        pointer-events: none;
+        white-space: nowrap;
+        transition: opacity 0.2s;
+        z-index: 10;
+        text-align: center;
+    }
+    .add-task-btn:hover::after,
+    .add-task-btn:focus::after {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments for tablets */
+@media (max-width: 1200px) {
+    .add-task-btn,
+    .task-row,
+    .task-groups {
+        max-width: 95vw;
+    }
+}
+
+/* Responsive for tablets and small laptops */
+@media (max-width: 900px) {
+    .add-task-btn,
+    .task-row,
+    .task-groups {
+        max-width: 98vw;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .login-container {
+        max-width: 95vw;
+        padding: 2rem 1.2rem 1.5rem 1.2rem;
+        border-radius: 18px;
+    }
+    .login-form {
+        max-width: 94vw;
+        padding: 1.5rem 1rem 1.2rem 1rem;
+        border-radius: 12px;
+    }
+}
+
+/* Responsive for small screens */
+@media (max-width: 700px) {
+    .app-main {
+        width: 100vw;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+    .board-title {
+        padding: 0.7rem 2vw;
+        font-size: 1.1rem;
+        min-height: unset;
+        flex-direction: row;
+        flex-wrap: wrap; /* Allow wrapping if needed */
+        gap: 0.5rem;
+    }
+    .board-title-left {
+        min-width: 0;
+        flex-shrink: 1;
+        font-size: 1.5rem;  /* Slightly smaller on tablets */
+    }
+    .board-title-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        flex-wrap: wrap;
+    }
+    .add-task-btn,
+    .task-row,
+    .task-groups {
+        max-width: 99vw;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+    }
+    .logout-btn {
+        width: auto;
+        min-width: 90px;
+        margin-left: 0;
+        margin-right: 1.2rem; /* Add right side padding */
+        justify-content: flex-end;
+        align-self: flex-start;
+        /* Prevent overflow */
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* Responsive for mobile screens */
+@media (max-width: 500px) {
+    .add-task-btn,
+    .task-row,
+    .task-groups {
+        max-width: 100vw;
+        font-size: 0.9rem;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
+    }
+    .login-form {
+        padding: 1.2rem 0.4rem 1.2rem 0.4rem;
+        max-width: 98vw;
+    }
+    .board-title {
+        padding: 0.4rem 1vw;
+        font-size: 0.95rem;
+        border-radius: 0;
+        min-height: 54px;
+        flex-direction: row;
+        flex-wrap: wrap; /* Allow wrapping if needed */
+        gap: 0.3rem;
+    }
+    .board-title-left {
+        font-size: 1.15rem; /* Smaller on mobile */
+    }
+    .logout-btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.7rem;
+        width: auto;
+        min-width: 70px;
+        margin-left: 0;
+        margin-right: 1.2rem; /* Add right side padding */
+        justify-content: flex-end;
+        align-self: flex-start;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* Logout button styles */
+.logout-btn {
+    background: linear-gradient(90deg, #2563eb 60%, #60a5fa 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.3rem;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+    transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+    outline: none;
+    border: 2px solid transparent;
+}
+.logout-btn i {
+    font-size: 1.1em;
+}
+.logout-btn:hover, .logout-btn:focus {
+    background: #fff;
+    color: var(--danger);
+    box-shadow: 0 4px 16px rgba(37,99,235,0.13);
+    border-color: var(--danger);
+}

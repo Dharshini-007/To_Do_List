@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDOList</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="list.css">
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="login-container" id="loginContainer">
+        <form class="login-form" id="loginForm" autocomplete="off">
+            <div class="login-title"><i class="fa-solid fa-user"></i> Login In</div>
+            <input type="text" id="username" placeholder="Username" required autocomplete="off">
+            <input type="password" id="password" placeholder="Password" required autocomplete="off">
+            <button type="submit">Login</button>
+            <div class="forgot-password-link" id="forgotPasswordLink">
+                <a href="#" tabindex="0">Forgot Password?</a>
+            </div>
+            <div class="login-error" id="loginError"></div>
+        </form>
+    </div>
+    <!-- Main App Layout -->
+    <div class="app-main" id="appMain" style="display:none;">
+        <div class="board-title">
+            <div class="board-title-left">
+                <i class="fa-solid fa-list-check" style="color:var(--primary);"></i>
+                My Tasks
+            </div>
+            <button class="logout-btn" id="logoutBtn" title="Logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Logout
+            </button>
+        </div>
+        <button class="add-task-btn" id="addTaskBtn">
+          <i class="fa-solid fa-plus"></i>
+          <span>Add Task</span>
+        </button>
+        <div class="task-groups" id="taskGroups">
+            <!-- Task groups will be rendered here -->
+        </div>
+    </div>
+    <!-- Modal for Add/Edit Task -->
+    <div class="modal-bg" id="modalBg" style="display:none;">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modalCloseBtn" title="Close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-title" id="modalTitle">Add Task</div>
+            <form id="taskForm" autocomplete="off">
+                <div>
+                    <label for="taskIcon">Icon</label>
+                    <select id="taskIcon" required>
+                        <option value="fa-code">&#xf121; Code</option>
+                        <option value="fa-paint-brush">&#xf1fc; Design</option>
+                        <option value="fa-check-double">&#xf560; Test</option>
+                        <option value="fa-book">&#xf02d; Study</option>
+                        <option value="fa-bug">&#xf188; Bug</option>
+                        <option value="fa-rocket">&#xf135; Launch</option>
+                        <option value="fa-pen">&#xf304; Write</option>
+                        <option value="fa-lightbulb">&#xf0eb; Idea</option>
+                        <option value="fa-calendar">&#xf133; Event</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="taskTitle">Title</label>
+                    <input type="text" id="taskTitle" maxlength="60" required>
+                </div>
+                <div>
+                    <label for="taskStatus">Status</label>
+                    <select id="taskStatus" required>
+                        <option value="notstarted">Not Started</option>
+                        <option value="inprogress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="taskProgress">Progress (%)</label>
+                    <input type="number" id="taskProgress" min="0" max="100" required>
+                </div>
+                <div>
+                    <label for="taskPref">Preference</label>
+                    <select id="taskPref" required>
+                        <option value="normal">Normal</option>
+                        <option value="high">High</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="taskDeadline">Deadline</label>
+                    <input type="date" id="taskDeadline">
+                </div>
+                <div class="modal-error" id="modalError"></div>
+                <div class="modal-actions">
+                    <button type="button" class="cancel-btn" id="cancelTaskBtn">Cancel</button>
+                    <button type="submit" class="save-btn" id="saveTaskBtn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="list.js"></script>
+</body>
+</html>
